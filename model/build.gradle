@@ -1,0 +1,32 @@
+// Para Dagger 2
+plugins {
+    id "net.ltgt.apt" version "0.10"
+}
+
+apply plugin: 'java'
+
+dependencies {
+    // Dagger
+    compile "com.google.dagger:dagger:$daggerVersion"
+    apt "com.google.dagger:dagger-compiler:$daggerVersion"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Commons
+    compile project(':common')
+
+    // Joda-time
+    compile "joda-time:joda-time:$jodatimeVersion"
+
+    // Test
+    testCompile 'junit:junit:4.12'
+    testCompile "org.robolectric:robolectric:3.1.4"
+    // Optional -- Mockito framework
+    testCompile 'org.mockito:mockito-core:2.7.21'
+    testCompile 'org.powermock:powermock-module-junit4:1.5'
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

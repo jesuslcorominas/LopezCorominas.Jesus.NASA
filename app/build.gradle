@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+// Android Annotations
+dependencies {
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+}
+
+// Dagger
+dependencies {
+    compile "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+}
+
+def androidSupport = '26.1.0'
+
+android {
+    compileSdkVersion 26
+
+    def versionPropsFile = file('version.properties')
+
+    // Autoincrement del version code see https://stackoverflow.com/a/21405744
+    if (versionPropsFile.canRead()) {
+        def Properties versionProps = new Properties()
+
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+        def code = versionProps['VERSION_CODE'].toInteger() + 1
+
+        versionProps['VERSION_CODE'] = code.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+
+        defaultConfig {
+            applicationId "com.jesuslcorominas.nasa.app"
+            minSdkVersion minVersion
+            targetSdkVersion targetSDK
+            versionCode code
+            versionName "1.0"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+            vectorDrawables.useSupportLibrary = true
+
+            buildConfigField "String", "END_POINT", "\"\""
+            buildConfigField "String", "URL_WS", "\"\""
+        }
+
+    } else {
+        throw new GradleException("Could not read version.properties!")
+
+    }
+    buildTypes {
+
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+    }
+}
+
+dependencies {
+    // Modelo
+    compile project(':model')
+
+    // Data Referencia necesaria para que dagger pueda hacer las inyecciones de RepositoryModule
+    compile project(':data')
+
+    // Modelo
+    compile project(':common')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // EventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    // GSON
+    compile "org.immutables:gson:$gsonVersion"
+
+    // Joda-time
+    compile "joda-time:joda-time:$jodatimeVersion"
+
+    // Android
+    compile "com.android.support:appcompat-v7:$androidSupport"
+    compile "com.android.support:support-v4:$androidSupport"
+    compile "com.android.support:recyclerview-v7:$androidSupport"
+    compile "com.android.support:design:$androidSupport"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
