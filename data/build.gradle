@@ -35,6 +35,9 @@ dependencies {
     // Joda-time
     compile "joda-time:joda-time:$jodatimeVersion"
 
+    // ModelMapper
+    compile "org.modelmapper:modelmapper:$modelMapperVersion"
+
     // Test
     testCompile 'junit:junit:4.12'
     testCompile "org.robolectric:robolectric:3.1.4"

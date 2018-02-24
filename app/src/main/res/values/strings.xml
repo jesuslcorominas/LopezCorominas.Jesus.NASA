@@ -1,3 +1,9 @@
 <resources>
+    <string name="photo_animation">photo</string>
+
     <string name="app_name">NASA</string>
+
+    <string name="button_accept">Aceptar</string>
+
+    <string name="licenses">Licencias</string>
 </resources>
