@@ -8,7 +8,7 @@ import android.view.View;
  * Parametrizado con la vista que va a mostrar los datos por pantalla
  *
  * @author Jesus Lopez Corominas
- * @see @link {https://github.com/excilys/androidannotations/wiki/Adapters-and-lists}
+ * @see <a href="https://github.com/excilys/androidannotations/wiki/Adapters-and-lists">Adaptadores y listas</a>
  */
 public class ViewWrapper<V extends View> extends RecyclerView.ViewHolder {
 

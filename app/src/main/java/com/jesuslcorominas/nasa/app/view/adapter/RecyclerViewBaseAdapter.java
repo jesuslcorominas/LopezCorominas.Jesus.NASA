@@ -122,11 +122,37 @@ public abstract class RecyclerViewBaseAdapter<T, V extends View & ItemView<T>> e
         this.itemLongClickListener = listener;
     }
 
+    /**
+     * Interface para gestionar el clic en un item de la lista
+     *
+     * @param <T> El elemento pintado en el item
+     * @param <V> El item pulsado
+     */
     public interface OnItemClickListener<T, V> {
+        /**
+         * @param position
+         * @param view
+         * @param data
+         */
         void onItemClick(int position, V view, T data);
     }
 
+    /**
+     * Interface para gestionar la pulsacion prolongada en el item de la lista
+     *
+     * @param <T> El elemento pintado en el item
+     * @param <V> El item pulsado
+     */
     public interface OnItemLongClickListener<T, V> {
+
+        /**
+         * Click prolongado en un elemento de la lista
+         *
+         * @param position La posicion en la lista del item pulsado
+         * @param view     La vista pulsada
+         * @param data     El elemento pintado en el item
+         * @return True si se gestiona la pulsacion prolongada. False si hay que propagar el evento.
+         */
         boolean onLongItemClick(int position, V view, T data);
     }
 

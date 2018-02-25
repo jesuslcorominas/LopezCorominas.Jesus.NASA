@@ -5,7 +5,7 @@ import com.jesuslcorominas.nasa.app.model.Photo;
 import java.util.Collection;
 
 /**
- * CallbackView de la vista principal.
+ * {@link CallbackView} de la vista principal.
  *
  * @author Jesús López Corominas
  */

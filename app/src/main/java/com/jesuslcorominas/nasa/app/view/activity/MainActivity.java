@@ -27,6 +27,14 @@ import javax.inject.Inject;
 
 import de.psdev.licensesdialog.LicensesDialog;
 
+
+/**
+ * Activity principal de la aplicacion. Muestra en un {@link MainFragment} un listado de {@link Photo}
+ * que habra obtenido a traves del {@link MainPresenter} que realizara la llamada al servicio rest
+ * de la NASA
+ *
+ * @author Jesús López Corominas
+ */
 @EActivity(R.layout.activity_main)
 @SuppressLint("Registered")
 @OptionsMenu(R.menu.menu_main)
@@ -107,6 +115,15 @@ public class MainActivity extends AbstractBaseAppCompatActivity<MainView> implem
     // ==============================
     // Llamadas al presenter en Background
     // ==============================
+
+    /**
+     * Para no bloquear la UI todas las llamadas a los metodos del {@link Presenter} se ejecutan en
+     * segundo plano. Para ello, extraemos la llamada a un metodo que anotaremos como Background. Lo
+     * hacemos aqui para poder desacoplar el {@link Presenter} de Android, ya que si lo hiciesemos
+     * en el mismo presenter tendria que tener una referencia a AndroidAnnotations. Es importante que
+     * la implementacion de los metodos de {@link com.jesuslcorominas.nasa.app.view.callbackview.CallbackView}
+     * se anoten con UIThread para volver al hilo principal y poder modificar la UI
+     */
     @Background
     void callPresenterGetPhotos() {
         presenter.getPhotos();

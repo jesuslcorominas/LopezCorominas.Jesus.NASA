@@ -19,6 +19,8 @@ import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
+ * Fragment de la ventana principal. Muestra un listado de {@link Photo}
+ *
  * @author Jesús López Corominas
  */
 @EFragment(R.layout.fragment_main)
@@ -89,12 +91,26 @@ public class MainFragment extends AbstractBaseFragment implements PhotosAdapter.
         }
     }
 
+    // =========================================
+    //  Eventos de EventBus
+    // =========================================
+
+    /**
+     * {@link com.jesuslcorominas.nasa.app.event.Event} propagado a traves de EventBus para recibir
+     * el listado de {@link Photo}
+     *
+     * @param event El evento con el listado de {@link Photo}
+     */
     @SuppressWarnings("unused")
     @Subscribe
     public void onGetPhotosEvent(GetPhotosEvent event) {
         photosAdapter.addItems(event.getPhotos());
     }
 
+
+    // =========================================
+    //  PhotosAdapter.OnItemClickListener
+    // =========================================
     @Override
     public void onItemClick(int position, PhotoItemView view, Photo data) {
         if (listener != null) {
@@ -105,10 +121,24 @@ public class MainFragment extends AbstractBaseFragment implements PhotosAdapter.
     // =========================================
     //  Interaction
     // =========================================
+
+    /**
+     * Interface de interaccion con el Fragment que debera ser implementada por la {@link Activity}
+     * contenedora
+     */
     public interface MainFragmentInteractionListener {
+        /**
+         * Metodo a ejecutar cuando termina de cargarse el Fragment
+         */
         void onInitFinished();
 
-        void onItemClick(View originView,  Photo photo);
+        /**
+         * Metodo a ejecutar cuando se pulsa en un elemento del listado
+         *
+         * @param originView La vista sobre la que se pulso para realizar la transicion animada
+         * @param photo      La photo de la que se quiere mostrar el detalle
+         */
+        void onItemClick(View originView, Photo photo);
     }
 
 }

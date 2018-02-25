@@ -12,6 +12,8 @@ import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 /**
+ * Adaptador para mostrar el listado de {@link Photo}
+ *
  * @author Jesús López Corominas
  */
 @EBean

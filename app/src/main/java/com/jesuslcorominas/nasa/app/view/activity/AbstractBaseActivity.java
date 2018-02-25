@@ -22,17 +22,43 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 /**
+ * Activity abstracta para poder ser mostrada a pantalla completa.
+ * <p>
+ * Todos los metodos abstractos que deberan ser implementados por las clases hijas son invocados
+ * desde el metodo afterViews, que esta anotado como @{@link AfterViews} con lo que nos aseguramos
+ * que la vista ya ha sido inicializada.
+ * <p>
+ * La Activity se registra para los eventos de {@link EventBus}. Al hacer esto, estamos obligados
+ * a tener un metodo anotado como {@link Subscribe}, por lo que escucharemos por un {@link AbstractEvent}
+ * que realmente nunca llegara a ejecutarse.
+ *
  * @author Jesús López Corominas
  */
 @EActivity
 abstract class AbstractBaseActivity<V extends CallbackView> extends Activity implements CallbackView {
 
+    /**
+     * Metodo a ejecutar al inicializarse la activity
+     */
     abstract void init();
 
+    /**
+     * Obtiene el {@link Presenter} asociado a la Activity
+     *
+     * @return el {@link Presenter} asociado a la Activity
+     */
     abstract Presenter<V> getPresenter();
 
+    /**
+     * Obtiene el {@link CallbackView} del {@link Presenter}. Sera la propia {@link android.app.Activity}
+     *
+     * @return el {@link CallbackView} del {@link Presenter}
+     */
     abstract V getCallbackView();
 
+    /**
+     * Llama a Dagger para realizar la inyeccion de dependencias
+     */
     abstract void initializeDagger();
 
     @Bean

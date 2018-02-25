@@ -12,6 +12,9 @@ import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
 /**
+ * {@link android.app.Fragment} para mostrar el detalle de una
+ * {@link com.jesuslcorominas.nasa.app.model.Photo}
+ *
  * @author Jesús López Corominas
  */
 @EFragment(R.layout.fragment_detail)
@@ -69,6 +72,10 @@ public class DetailFragment extends AbstractBaseFragment {
     // =========================================
     //  Interaction
     // =========================================
+
+    /**
+     * Clic en la imagen. Notifica a la activity contenedora que se ha hecho clic
+     */
     @Click(R.id.fragment_detail_imageView_photo)
     void onPhotoClick() {
         if (listener != null) {
@@ -76,8 +83,15 @@ public class DetailFragment extends AbstractBaseFragment {
         }
     }
 
-
+    /**
+     * Interface de interaccion del Fragment que debera ser implementado por la {@link Activity}
+     * que lo contenga.
+     */
     public interface DetailFragmentInteractionListener {
+
+        /**
+         * Metodo a ejecutar al pulsar en la imagen
+         */
         void onPhotoClick();
     }
 }
