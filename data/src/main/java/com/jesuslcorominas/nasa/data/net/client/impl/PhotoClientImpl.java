@@ -9,17 +9,38 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
+ * {@inheritDoc}
+ *
  * @author Jesús López Corominas
  */
 @SuppressWarnings("NullableProblems") /* SuppressWarning from retrofit @ParameterAreNonnullByDefault */
 public class PhotoClientImpl implements PhotoClient {
 
+    /**
+     * Api de retrofit para realizar las llamadas a los servicios Rest
+     */
     private final PhotoClient.Api api;
 
+    /**
+     * Constructor unico con la {@link com.jesuslcorominas.nasa.data.net.client.PhotoClient.Api} de
+     * retrofit. Sera utilizado por Dagger2 para inyectar las dependecias de la clase.
+     *
+     * @param api La api de retrofit para las llamadas remotas
+     */
     public PhotoClientImpl(Api api) {
         this.api = api;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Invoca a la {@link com.jesuslcorominas.nasa.data.net.client.PhotoClient.Api} de Retrofit para
+     * conseguir el listado de {@link com.jesuslcorominas.nasa.data.net.dto.PhotoDto}
+     *
+     * @param sol      El sol del que se quieren obtener las {@link com.jesuslcorominas.nasa.data.net.dto.PhotoDto}
+     * @param apiKey   El api key para la peticion
+     * @param callback Objeto donde tratar la respuesta
+     */
     @Override
     public void getPhotos(Integer sol, String apiKey, final GetPhotosCallback callback) {
         api.photos(sol, apiKey).enqueue(new Callback<GetPhotosResponseDto>() {
