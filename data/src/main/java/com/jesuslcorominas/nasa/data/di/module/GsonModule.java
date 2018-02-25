@@ -22,11 +22,21 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
+ * Modulo de Dagger 2 que provee de las dependencias necesarias para configurar correctamente Gson
+ * y el parseo de los resultados de las peticiones remotas
+ *
  * @author Jesús López Corominas
  */
 @Module
 public class GsonModule {
 
+    /**
+     * Provee del objeto Gson a utilizar en el parseo de las respuestas de las peticiones remotas
+     *
+     * @param dateTimeJsonSerializer   El serializador de {@link DateTime} a String
+     * @param dateTimeJsonDeserializer El deserializador de String a {@link DateTime}
+     * @return EL objeto Gson correctamente configurado
+     */
     @Singleton
     @Provides
     public Gson provideGson(JsonSerializer<DateTime> dateTimeJsonSerializer, JsonDeserializer<DateTime> dateTimeJsonDeserializer) {
@@ -38,6 +48,11 @@ public class GsonModule {
                 create();
     }
 
+    /**
+     * Provee del serializador de {@link DateTime} a String
+     *
+     * @return El serializador de {@link DateTime} a String
+     */
     @Singleton
     @Provides
     JsonSerializer<DateTime> provideDateTimeJsonSerializer() {
@@ -49,6 +64,11 @@ public class GsonModule {
         };
     }
 
+    /**
+     * Provee del deserializador de String a {@link DateTime}
+     *
+     * @return el deserializador de String a {@link DateTime}
+     */
     @Singleton
     @Provides
     JsonDeserializer<DateTime> provideDateTimeJsonDeserializer() {

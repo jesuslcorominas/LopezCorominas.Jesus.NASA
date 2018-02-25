@@ -8,11 +8,20 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
+ * Modulo de Dagger 2 que provee de los repositorios de la aplicacion
+ *
  * @author Jesús López Corominas
  */
 @Module(includes = {DatasourceModule.class})
 public class RepositoryModule {
 
+    /**
+     * Provee del repositorio de {@link com.jesuslcorominas.nasa.data.net.dto.PhotoDto}
+     *
+     * @param photoRemoteDatasource La fuente de datos remota de
+     *                              {@link com.jesuslcorominas.nasa.data.net.dto.PhotoDto}
+     * @return El repositorio de {@link com.jesuslcorominas.nasa.data.net.dto.PhotoDto}
+     */
     @Provides
     public PhotoRepository providePhotoRepository(PhotoRemoteDatasource photoRemoteDatasource) {
         return new PhotoRepositoryImpl(photoRemoteDatasource);
