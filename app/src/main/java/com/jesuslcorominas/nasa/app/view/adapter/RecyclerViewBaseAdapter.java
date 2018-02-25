@@ -18,8 +18,8 @@ import java.util.List;
  * La clase esta parametrizada con el VO que se va mostrar en pantalla y la vista que lo va a mostrar
  * que debera implementar {@link ItemView}.
  *
- * @see @link(https://github.com/excilys/androidannotations/wiki/Adapters-and-lists)
  * @author Jesus Lopez Corominas
+ * @see <a href="https://github.com/excilys/androidannotations/wiki/Adapters-and-lists">Adaptadores y listas</a>
  */
 public abstract class RecyclerViewBaseAdapter<T, V extends View & ItemView<T>> extends RecyclerView.Adapter<ViewWrapper<V>> {
 

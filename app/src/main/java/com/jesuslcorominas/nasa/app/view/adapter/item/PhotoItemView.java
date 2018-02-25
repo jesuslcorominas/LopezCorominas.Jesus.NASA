@@ -15,14 +15,19 @@ import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
 /**
+ * {@inheritDoc}
+ * <p>
+ * ItemView de {@link Photo}
+ *
  * @author Jesús López Corominas
  */
 @EViewGroup(R.layout.item_photo)
 public class PhotoItemView extends CardView implements ItemView<Photo> {
 
+    /**
+     * El contexto de la aplicacion
+     */
     private Context context;
-
-    private Photo photo;
 
     @ViewById(R.id.item_photo_linearLayout_content)
     LinearLayout linearLayoutContent;
@@ -44,11 +49,9 @@ public class PhotoItemView extends CardView implements ItemView<Photo> {
 
     @Override
     public void bind(Photo item, int position) {
-        this.photo = item;
-
         this.setCardBackgroundColor(context.getResources().getColor(R.color.background_light));
 
-        linearLayoutContent.setBackgroundColor(context.getResources().getColor(position % 2 == 0 ? R.color.white: R.color.odd_color));
+        linearLayoutContent.setBackgroundColor(context.getResources().getColor(position % 2 == 0 ? R.color.white : R.color.odd_color));
 
         textViewCameraName.setText(item.getCamera().getFullName());
         textViewDate.setText(item.getEarthDate().toString(DateUtil.PRINT_DATE_FORMAT));

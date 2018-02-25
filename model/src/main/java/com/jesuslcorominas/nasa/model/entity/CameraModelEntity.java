@@ -3,8 +3,11 @@ package com.jesuslcorominas.nasa.model.entity;
 import java.io.Serializable;
 
 /**
+ * Representacion de la entidad Camera
+ *
  * @author Jesús López Corominas
  */
+@SuppressWarnings("unused")
 public class CameraModelEntity implements Serializable {
 
     private Long id;

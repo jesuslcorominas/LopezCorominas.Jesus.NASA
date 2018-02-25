@@ -7,8 +7,11 @@ import org.joda.time.DateTime;
 import java.io.Serializable;
 
 /**
+ * Representacion de la {@link com.jesuslcorominas.nasa.model.entity.PhotoModelEntity} en la api Rest
+ *
  * @author Jesús López Corominas
  */
+@SuppressWarnings("unused")
 public class PhotoDto implements Serializable {
 
     private Long id;

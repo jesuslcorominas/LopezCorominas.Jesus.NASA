@@ -8,9 +8,12 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
+ * Representacion de la {@link com.jesuslcorominas.nasa.model.entity.RoverModelEntity} en la api Rest
+ *
  * @author Jesús López Corominas
  */
-public class RoverDto implements Serializable{
+@SuppressWarnings("unused")
+public class RoverDto implements Serializable {
 
     private Long id;
 

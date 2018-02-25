@@ -5,8 +5,11 @@ import org.joda.time.DateTime;
 import java.util.Collection;
 
 /**
+ * Representacion de la entidad Rover
+ *
  * @author Jesús López Corominas
  */
+@SuppressWarnings("unused")
 public class RoverModelEntity {
 
     private Long id;

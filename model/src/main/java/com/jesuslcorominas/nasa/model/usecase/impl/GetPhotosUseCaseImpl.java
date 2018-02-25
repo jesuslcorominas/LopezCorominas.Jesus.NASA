@@ -8,19 +8,37 @@ import com.jesuslcorominas.nasa.model.usecase.GetPhotosUseCase;
 import java.util.Collection;
 
 /**
+ * {@inheritDoc}
+ * <p>
+ * Invoca al {@link PhotoRepository} para obtener el listado de {@link PhotoModelEntity}
+ *
  * @author Jesús López Corominas
  */
 public class GetPhotosUseCaseImpl implements GetPhotosUseCase {
 
+    /**
+     * El {@link com.jesuslcorominas.nasa.model.repository.Repository} de {@link PhotoModelEntity}
+     */
     private final PhotoRepository photoRepository;
 
+    /**
+     * Constructor unico parametrizado con el {@link PhotoRepository}. Sera utilizado por Dagger2 para
+     * inyectar las dependecias de la clase.
+     *
+     * @param photoRepository El repositorio de {@link PhotoModelEntity}
+     */
     public GetPhotosUseCaseImpl(PhotoRepository photoRepository) {
         this.photoRepository = photoRepository;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param callback Interface de respuesta para tratar los datos obtenidos
+     */
     @Override
     public void getPhotos(final GetPhotosCallback callback) {
-        // TODO si hay tiempo sacarlo a preferencias
+        // TODO Sacarlo a preferencias. Mejor ahi que hardcodeado
         Integer sol = 1000;
         String apiKey = "DEMO_KEY";
 

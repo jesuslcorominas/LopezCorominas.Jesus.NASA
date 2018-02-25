@@ -18,7 +18,7 @@ import org.greenrobot.eventbus.Subscribe;
  * Las clases hijas han de implementar el metodo abstracto @link {@link AbstractBaseFragment#init()} que al
  * estar anotado como @{@link AfterViews} sera invocado una vez se hayan inyectado las vistas
  *
- * @see @link(https://github.com/excilys/androidannotations/wiki/Enhance-Fragments}
+ * @see <a href="https://github.com/excilys/androidannotations/wiki/Enhance-Fragments">Enhance-Fragments</a>
  */
 @EFragment
 abstract class AbstractBaseFragment extends Fragment {

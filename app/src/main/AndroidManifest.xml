@@ -23,7 +23,7 @@
         </activity>
         <activity
             android:name=".view.activity.DetailActivity_"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
         </activity>
     </application>
 

@@ -5,8 +5,11 @@ import org.joda.time.DateTime;
 import java.io.Serializable;
 
 /**
+ * Representacion de la entidad Photo
+ *
  * @author Jesús López Corominas
  */
+@SuppressWarnings("unused")
 public class PhotoModelEntity implements Serializable {
 
     private Long id;

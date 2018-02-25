@@ -5,8 +5,11 @@ import org.joda.time.DateTime;
 import java.io.Serializable;
 
 /**
+ * Representacion en la capa de presentacion del objeto {@link com.jesuslcorominas.nasa.model.entity.PhotoModelEntity}
+ *
  * @author Jesús López Corominas
  */
+@SuppressWarnings("unused")
 public class Photo implements Serializable {
 
     private Long id;

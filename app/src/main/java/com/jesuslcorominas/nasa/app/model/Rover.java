@@ -5,8 +5,11 @@ import org.joda.time.DateTime;
 import java.util.Collection;
 
 /**
+ * Representacion en la capa de presentacion del objeto {@link com.jesuslcorominas.nasa.model.entity.RoverModelEntity}
+ *
  * @author Jesús López Corominas
  */
+@SuppressWarnings("unused")
 public class Rover {
 
     private Long id;

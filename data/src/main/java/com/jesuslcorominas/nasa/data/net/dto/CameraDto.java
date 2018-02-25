@@ -5,8 +5,11 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
+ * Representacion de la {@link com.jesuslcorominas.nasa.model.entity.CameraModelEntity} en la api Rest
+ *
  * @author Jesús López Corominas
  */
+@SuppressWarnings("unused")
 public class CameraDto implements Serializable {
 
     private Long id;

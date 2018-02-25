@@ -9,6 +9,9 @@ import com.jesuslcorominas.nasa.app.view.activity.DetailActivity_;
 import org.androidannotations.annotations.EBean;
 
 /**
+ * {@link EBean} para centralizar toda la navegacion de la aplicacion.
+ *
+ * @see <a href="https://github.com/androidannotations/androidannotations/wiki/Enhance-custom-classes">Enhance Custom Clasess</a>
  * @author Jesús López Corominas
  */
 @EBean
@@ -24,6 +27,15 @@ public class Navigator {
         origin.finish();
     }
 
+    /**
+     * Navega a la {@link com.jesuslcorominas.nasa.app.view.activity.DetailActivity}.
+     *
+     * @param origin  El contexto de la aplicacion que lanza la ventana de detalle
+     * @param imgSrc  El path de la imagen a mostrar en la ventana de detalle
+     * @param options {@link Bundle} con la informacion necesaria para la animacion de la imagen
+     *                desde la vista principal a la de detalle
+     * @see <a href="https://developer.android.com/training/material/animations.html?hl=es-419">Iniciar una actividad con un elemento compartido</a>
+     */
     public void detail(Context origin, String imgSrc, Bundle options) {
         DetailActivity_.intent(origin).imgSrc(imgSrc).withOptions(options).start();
     }

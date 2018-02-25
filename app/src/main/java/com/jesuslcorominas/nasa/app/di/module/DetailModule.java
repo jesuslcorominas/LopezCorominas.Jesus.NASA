@@ -7,7 +7,10 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
+ * Modulo de Dagger2 que provee de las dependencias de {@link com.jesuslcorominas.nasa.app.view.activity.DetailActivity}
+ *
  * @author Jesús López Corominas
+ * @see <a href="https://google.github.io/dagger/">Dagger2</a>
  */
 @Module
 public class DetailModule {

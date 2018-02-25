@@ -1,22 +1,28 @@
 package com.jesuslcorominas.nasa.app.view.callbackview;
 
 /**
+ * Interface base para todas las vistas con un {@link com.jesuslcorominas.nasa.app.presenter.Presenter}
+ * asociado.
+ *
+ * Describe los metodos que tiene que implementar una vista para actualizar la UI despues de una
+ * accion completada en el {@link com.jesuslcorominas.nasa.app.presenter.Presenter}
+ *
  * @author Jesús López Corominas
  */
 public interface CallbackView {
 
     /**
-     * Show progress view
+     * Muestra un progress view indeterminado
      */
     void showProgress();
 
     /**
-     * Hide progress view
+     * Oculta la vista de progreso
      */
     void hideProgress();
 
     /**
-     * Show an error
+     * Muestra un error al usuario
      */
     void showError(int code, String message);
 }

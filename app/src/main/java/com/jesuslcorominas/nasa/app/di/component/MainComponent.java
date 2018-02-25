@@ -9,7 +9,10 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
+ * Componente de Dagger2 para las inyecciones necesarias en {@link MainActivity}
+ *
  * @author Jesús López Corominas
+ * @see <a href="https://google.github.io/dagger/">Dagger2</a>
  */
 @Singleton
 @Component(modules = {MainModule.class, RepositoryModule.class})

@@ -2,7 +2,7 @@ package com.jesuslcorominas.nasa.data.net.client.impl;
 
 import com.jesuslcorominas.nasa.common.Error;
 import com.jesuslcorominas.nasa.data.net.client.PhotoClient;
-import com.jesuslcorominas.nasa.data.net.dto.ServerResponseDto;
+import com.jesuslcorominas.nasa.data.net.dto.GetPhotosResponseDto;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,9 +22,9 @@ public class PhotoClientImpl implements PhotoClient {
 
     @Override
     public void getPhotos(Integer sol, String apiKey, final GetPhotosCallback callback) {
-        api.photos(sol, apiKey).enqueue(new Callback<ServerResponseDto>() {
+        api.photos(sol, apiKey).enqueue(new Callback<GetPhotosResponseDto>() {
             @Override
-            public void onResponse(Call<ServerResponseDto> call, Response<ServerResponseDto> response) {
+            public void onResponse(Call<GetPhotosResponseDto> call, Response<GetPhotosResponseDto> response) {
                 if (!response.isSuccessful()) {
                     callback.onError(new Error(Error.HTTP_ERROR, "HTTP Error: " + response.code()));
                     return;
@@ -34,7 +34,7 @@ public class PhotoClientImpl implements PhotoClient {
             }
 
             @Override
-            public void onFailure(Call<ServerResponseDto> call, Throwable t) {
+            public void onFailure(Call<GetPhotosResponseDto> call, Throwable t) {
                 callback.onError(new Error(Error.GENERIC_ERROR, "Petition error: " + t.getMessage()));
             }
         });

@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
+ * Representacion de la respuesta del servidor a la peticion {@link com.jesuslcorominas.nasa.data.net.util.NetKeys#METHOD_GET_PHOTOS}
+ *
  * @author Jesús López Corominas
  */
-public class ServerResponseDto implements Serializable {
+public class GetPhotosResponseDto implements Serializable {
 
     private Collection<PhotoDto> photos;
 
