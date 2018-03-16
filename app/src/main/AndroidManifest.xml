@@ -3,6 +3,7 @@
     package="com.jesuslcorominas.nasa.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".App_"
@@ -23,8 +24,7 @@
         </activity>
         <activity
             android:name=".view.activity.DetailActivity_"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
     </application>
 
 </manifest>

@@ -1,11 +1,14 @@
 package com.jesuslcorominas.nasa.common.util;
 
+import org.joda.time.DateTime;
+
 /**
  * Clase de utilidades para el tratamiento de fechas
  *
  * @author Jesús López Corominas
  */
 public abstract class DateUtil {
+
 
     /**
      * Formato de fecha interno a la aplicacion. Es, por ejemplo, el formato en el que se recibe
@@ -23,5 +26,16 @@ public abstract class DateUtil {
      */
     private DateUtil() {
 
+    }
+
+    /**
+     * La fecha minima para mostrar {@link com.jesuslcorominas.nasa.common.model.Photo}: 1 de enero de 2017, por poner una
+     */
+    public static DateTime minDate() {
+        return new DateTime(2017, 1, 1, 0, 0);
+    }
+
+    public static DateTime maxDate() {
+        return new DateTime().minusDays(1);
     }
 }

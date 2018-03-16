@@ -7,11 +7,11 @@ import android.view.View;
 
 import com.jesuslcorominas.nasa.app.R;
 import com.jesuslcorominas.nasa.app.event.impl.GetPhotosEvent;
-import com.jesuslcorominas.nasa.app.model.Photo;
 import com.jesuslcorominas.nasa.app.view.adapter.PhotosAdapter;
 import com.jesuslcorominas.nasa.app.view.adapter.divider.HorizontalSpaceItemDecoration;
 import com.jesuslcorominas.nasa.app.view.adapter.divider.VerticalSpaceItemDecoration;
 import com.jesuslcorominas.nasa.app.view.adapter.item.PhotoItemView;
+import com.jesuslcorominas.nasa.common.model.Photo;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;

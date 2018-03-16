@@ -1,11 +1,14 @@
-package com.jesuslcorominas.nasa.data.datasource.remote.impl;
+package com.jesuslcorominas.nasa.data.datasource.impl;
 
-import com.jesuslcorominas.nasa.common.Error;
-import com.jesuslcorominas.nasa.data.datasource.remote.PhotoRemoteDatasource;
+import com.jesuslcorominas.nasa.common.Result;
+import com.jesuslcorominas.nasa.common.model.Photo;
+import com.jesuslcorominas.nasa.data.datasource.PhotoRemoteDatasource;
 import com.jesuslcorominas.nasa.data.net.client.PhotoClient;
 import com.jesuslcorominas.nasa.data.net.dto.PhotoDto;
 
-import java.util.Collection;
+import org.joda.time.DateTime;
+
+import java.util.List;
 
 /**
  * {@inheritDoc}
@@ -33,16 +36,22 @@ public class PhotoRemoteDatasourceImpl implements PhotoRemoteDatasource {
     }
 
     @Override
-    public void getPhotos(Integer sol, String apiKey, final GetPhotosCallback callback) {
-        photoClient.getPhotos(sol, apiKey, new PhotoClient.GetPhotosCallback() {
-            @Override
-            public void onSuccess(Collection<PhotoDto> result) {
-                callback.onSuccess(result);
-            }
+    public void getPhotosBySol(Integer sol, final GetPhotosCallback callback) {
+        photoClient.getPhotosBySol(sol, new PhotoClient.GetPhotosCallback() {
 
             @Override
-            public void onError(Error error) {
-                callback.onError(error);
+            public void onResult(Result<List<Photo>> result) {
+                callback.onResult(result);
+            }
+        });
+    }
+
+    @Override
+    public void getPhotosByDate(DateTime earthDate, final GetPhotosCallback callback) {
+        photoClient.getPhotosByDate(earthDate, new PhotoClient.GetPhotosCallback() {
+            @Override
+            public void onResult(Result<List<Photo>> result) {
+                callback.onResult(result);
             }
         });
     }

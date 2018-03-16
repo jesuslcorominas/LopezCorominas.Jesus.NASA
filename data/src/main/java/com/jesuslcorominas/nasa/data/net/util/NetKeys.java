@@ -12,6 +12,8 @@ public abstract class NetKeys {
      */
     public static final String PARAM_SOL = "sol";
 
+    public static final String PARAM_HEARTH_DATE = "earth_date";
+
     /**
      * Parametro api_key a enviar en la peticion
      */

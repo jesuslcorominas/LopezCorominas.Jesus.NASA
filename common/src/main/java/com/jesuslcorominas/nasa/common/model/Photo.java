@@ -1,36 +1,24 @@
-package com.jesuslcorominas.nasa.app.model;
+package com.jesuslcorominas.nasa.common.model;
 
 import org.joda.time.DateTime;
 
-import java.io.Serializable;
-
 /**
- * Representacion en la capa de presentacion del objeto {@link com.jesuslcorominas.nasa.model.entity.PhotoModelEntity}
+ * POJO del objeto Photo
  *
  * @author Jesús López Corominas
  */
 @SuppressWarnings("unused")
-public class Photo implements Serializable {
-
-    private Long id;
+public class Photo extends AbstractBaseVo {
 
     private Integer sol;
-
-    private Camera camera;
 
     private String imgSrc;
 
     private DateTime earthDate;
 
+    private Camera camera;
+
     private Rover rover;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Integer getSol() {
         return sol;
@@ -38,14 +26,6 @@ public class Photo implements Serializable {
 
     public void setSol(Integer sol) {
         this.sol = sol;
-    }
-
-    public Camera getCamera() {
-        return camera;
-    }
-
-    public void setCamera(Camera camera) {
-        this.camera = camera;
     }
 
     public String getImgSrc() {
@@ -64,6 +44,14 @@ public class Photo implements Serializable {
         this.earthDate = earthDate;
     }
 
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public void setCamera(Camera camera) {
+        this.camera = camera;
+    }
+
     public Rover getRover() {
         return rover;
     }
@@ -71,5 +59,4 @@ public class Photo implements Serializable {
     public void setRover(Rover rover) {
         this.rover = rover;
     }
-
 }

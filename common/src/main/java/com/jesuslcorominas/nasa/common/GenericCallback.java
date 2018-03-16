@@ -7,20 +7,15 @@ package com.jesuslcorominas.nasa.common;
  * objeto Callback para poder tratar el resultado. Con esto conseguimos en primer lugar un gran
  * desacoplamiento entre capas, ya que las capas inferiores no necesitan tener ningun tipo de
  * conocimiento de quien las esta invocando. En segundo lugar, conseguimos no tener que trabajar
- * con excepciones, ya que los Callback tienen un metodo onError en el que podemos tratar un
- * resultado fallido. Por ultimo, tambien conseguimos poder trabajar de manera asincrona. Nosotros
- * lanzamos la peticion sin bloquear la ejecucion y cuando termine se llamara al callback para
- * que trate el resultado
+ * con excepciones, ya que los Callback tienen informacion sobre el resultado de la peticion, lo
+ * que nos permite tratar el resultado fallido. Por ultimo, tambien conseguimos poder trabajar
+ * de manera asincrona. Nosotros lanzamos la peticion sin bloquear la ejecucion y cuando termine
+ * se llamara al callback para que trate el resultado
  *
  * @author Jesús López Corominas
  */
-public interface GenericCallback {
+public interface GenericCallback<T> {
 
-    /**
-     * Metodo a ejecutar cuando falla una accion
-     *
-     * @param error El error producido
-     */
-    void onError(Error error);
+    void onResult(Result<T> result);
 
 }

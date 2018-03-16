@@ -7,7 +7,7 @@ import org.joda.time.DateTime;
 import java.io.Serializable;
 
 /**
- * Representacion de la {@link com.jesuslcorominas.nasa.model.entity.PhotoModelEntity} en la api Rest
+ * Representacion de la {@link com.jesuslcorominas.nasa.common.model.Photo} en la api Rest
  *
  * @author Jesús López Corominas
  */

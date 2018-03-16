@@ -15,7 +15,7 @@ import org.androidannotations.annotations.Extra;
 import javax.inject.Inject;
 
 /**
- * Activity de detalle de un {@link com.jesuslcorominas.nasa.app.model.Photo}. Muestra a pantalla
+ * Activity de detalle de un {@link com.jesuslcorominas.nasa.common.model.Photo}. Muestra a pantalla
  * completa, ocultando la barra de estado y de navegacion, una imagen
  *
  * @author Jesús López Corominas

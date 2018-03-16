@@ -1,7 +1,7 @@
 package com.jesuslcorominas.nasa.data.net.dto;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Representacion de la respuesta del servidor a la peticion {@link com.jesuslcorominas.nasa.data.net.util.NetKeys#METHOD_GET_PHOTOS}
@@ -10,13 +10,13 @@ import java.util.Collection;
  */
 public class GetPhotosResponseDto implements Serializable {
 
-    private Collection<PhotoDto> photos;
+    private List<PhotoDto> photos;
 
-    public Collection<PhotoDto> getPhotos() {
+    public List<PhotoDto> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(Collection<PhotoDto> photos) {
+    public void setPhotos(List<PhotoDto> photos) {
         this.photos = photos;
     }
 }

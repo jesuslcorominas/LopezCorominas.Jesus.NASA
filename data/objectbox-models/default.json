@@ -1,0 +1,137 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:3443703600989663367",
+      "lastPropertyId": "5:4899440322541157067",
+      "name": "CameraEntity",
+      "properties": [
+        {
+          "id": "1:2231119088882441413",
+          "name": "id"
+        },
+        {
+          "id": "2:7717755354522225977",
+          "name": "name"
+        },
+        {
+          "id": "3:6849117990534223279",
+          "name": "fullName"
+        },
+        {
+          "id": "5:4899440322541157067",
+          "indexId": "4:5183249437131647135",
+          "name": "roverRelationId"
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:8081167724304337332",
+          "name": "photosRelation"
+        }
+      ]
+    },
+    {
+      "id": "2:5235738452567326736",
+      "lastPropertyId": "9:8753901402389104765",
+      "name": "PhotoEntity",
+      "properties": [
+        {
+          "id": "1:5539218190365453143",
+          "name": "id"
+        },
+        {
+          "id": "2:1496744594633832375",
+          "name": "sol"
+        },
+        {
+          "id": "3:4107452733776971690",
+          "name": "imgSrc"
+        },
+        {
+          "id": "4:1887220551597092450",
+          "name": "earthDate"
+        },
+        {
+          "id": "7:2886434985662858839",
+          "indexId": "5:2018254611878376577",
+          "name": "cameraRelationId"
+        },
+        {
+          "id": "9:8753901402389104765",
+          "indexId": "7:2978066478351414810",
+          "name": "roverRelationId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:299221492889390457",
+      "lastPropertyId": "8:7049725328879522864",
+      "name": "RoverEntity",
+      "properties": [
+        {
+          "id": "1:3678853937209487963",
+          "name": "id"
+        },
+        {
+          "id": "2:6349754970751598586",
+          "name": "name"
+        },
+        {
+          "id": "3:8522960332491040801",
+          "name": "landingDate"
+        },
+        {
+          "id": "4:372147859390248481",
+          "name": "launchDate"
+        },
+        {
+          "id": "5:4313215805385046876",
+          "name": "status"
+        },
+        {
+          "id": "6:6084032138716307198",
+          "name": "maxSol"
+        },
+        {
+          "id": "7:123515735173844225",
+          "name": "maxDate"
+        },
+        {
+          "id": "8:7049725328879522864",
+          "name": "totalPhotos"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:4617848443400971710",
+          "name": "camerasRelation"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "3:299221492889390457",
+  "lastIndexId": "7:2978066478351414810",
+  "lastRelationId": "2:8081167724304337332",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [
+    8235189246518303944,
+    6397012805927620990,
+    4585182084655982480,
+    922446889075029207
+  ],
+  "retiredPropertyUids": [
+    4094108304205415086,
+    7196145586477124555,
+    4425690893313920362,
+    4446809502520083676
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}

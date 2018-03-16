@@ -1,43 +1,41 @@
-package com.jesuslcorominas.nasa.app.model;
+package com.jesuslcorominas.nasa.data.database.objectbox.entity;
+
+import com.jesuslcorominas.nasa.data.database.objectbox.converter.DateConverter;
 
 import org.joda.time.DateTime;
 
-import java.util.Collection;
+import io.objectbox.annotation.Convert;
+import io.objectbox.annotation.Entity;
+import io.objectbox.relation.ToMany;
 
 /**
- * Representacion en la capa de presentacion del objeto {@link com.jesuslcorominas.nasa.model.entity.RoverModelEntity}
- *
  * @author Jesús López Corominas
  */
-@SuppressWarnings("unused")
-public class Rover {
-
-    private Long id;
+@Entity
+public class RoverEntity extends AbstractBaseEntity {
 
     private String name;
 
+    @Convert(converter = DateConverter.class, dbType = Long.class)
     private DateTime landingDate;
 
+    @Convert(converter = DateConverter.class, dbType = Long.class)
     private DateTime launchDate;
 
     private String status;
 
     private Integer maxSol;
 
+    @Convert(converter = DateConverter.class, dbType = Long.class)
     private DateTime maxDate;
 
     private Integer totalPhotos;
 
-    private Collection<Camera> cameras;
+    private ToMany<CameraEntity> camerasRelation;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    // =====================================
+    // Getters y Setters
+    // =====================================
     public String getName() {
         return name;
     }
@@ -94,11 +92,11 @@ public class Rover {
         this.totalPhotos = totalPhotos;
     }
 
-    public Collection<Camera> getCameras() {
-        return cameras;
+    public ToMany<CameraEntity> getCamerasRelation() {
+        return camerasRelation;
     }
 
-    public void setCameras(Collection<Camera> cameras) {
-        this.cameras = cameras;
+    public void setCamerasRelation(ToMany<CameraEntity> camerasRelation) {
+        this.camerasRelation = camerasRelation;
     }
 }

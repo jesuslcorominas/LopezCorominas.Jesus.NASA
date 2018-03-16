@@ -70,6 +70,13 @@
         <copyright>Copyright 2013-2017 Philip Schiffer</copyright>
         <license>Apache Software License 2.0</license>
     </notice>
+    <!-- Dagger 2-->
+    <notice>
+        <name>MaterialDateTimePicker</name>
+        <url>https://github.com/wdullaer/MaterialDateTimePicker</url>
+        <copyright>Copyright (c) 2015 Wouter Dullaert</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
     <!-- Modelmapper-->
     <notice>
         <name>ModelMapper</name>

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
- * Representacion de la {@link com.jesuslcorominas.nasa.model.entity.RoverModelEntity} en la api Rest
+ * Representacion de la {@link com.jesuslcorominas.nasa.common.model.Rover} en la api Rest
  *
  * @author Jesús López Corominas
  */

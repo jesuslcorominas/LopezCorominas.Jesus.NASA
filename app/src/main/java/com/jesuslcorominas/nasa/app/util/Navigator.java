@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.jesuslcorominas.nasa.app.view.activity.DetailActivity;
 import com.jesuslcorominas.nasa.app.view.activity.DetailActivity_;
 
 import org.androidannotations.annotations.EBean;
@@ -28,7 +29,7 @@ public class Navigator {
     }
 
     /**
-     * Navega a la {@link com.jesuslcorominas.nasa.app.view.activity.DetailActivity}.
+     * Navega a la {@link DetailActivity}.
      *
      * @param origin  El contexto de la aplicacion que lanza la ventana de detalle
      * @param imgSrc  El path de la imagen a mostrar en la ventana de detalle

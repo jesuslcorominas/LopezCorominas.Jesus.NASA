@@ -1,7 +1,7 @@
 package com.jesuslcorominas.nasa.app.event.impl;
 
 import com.jesuslcorominas.nasa.app.event.Event;
-import com.jesuslcorominas.nasa.app.model.Photo;
+import com.jesuslcorominas.nasa.common.model.Photo;
 
 import java.util.Collection;
 

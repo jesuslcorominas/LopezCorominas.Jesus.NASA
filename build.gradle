@@ -4,31 +4,35 @@ ext {
     AAVersion = '4.3.1'
     daggerVersion = '2.11'
     minVersion = 21
-    targetSDK = 26
+    targetSDK = 27
     jodatimeVersion = '2.9.9'
     gsonVersion = '2.2.10'
+    objectboxVersion = '1.4.2'
     modelMapperVersion = '1.1.2'
 }
 
 allprojects {
     buildscript {
         repositories {
-            google()
+            maven { url "http://objectbox.net/beta-repo/" }
             jcenter()
+            mavenCentral()
+            google()
         }
         dependencies {
             classpath 'com.android.tools.build:gradle:3.0.1'
 
-
+            classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
             // NOTE: Do not place your application dependencies here; they belong
             // in the individual module build.gradle files
         }
     }
 
     repositories {
-        google()
+        maven { url "http://objectbox.net/beta-repo/" }
         jcenter()
-        maven { url "https://jitpack.io" }
+        mavenCentral()
+        google()
     }
 }
 

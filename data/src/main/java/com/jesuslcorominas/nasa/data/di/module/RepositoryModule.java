@@ -1,8 +1,12 @@
 package com.jesuslcorominas.nasa.data.di.module;
 
-import com.jesuslcorominas.nasa.data.datasource.remote.PhotoRemoteDatasource;
+import com.jesuslcorominas.nasa.data.datasource.PhotoLocalDatasource;
+import com.jesuslcorominas.nasa.data.datasource.PhotoRemoteDatasource;
+import com.jesuslcorominas.nasa.data.datasource.PreferencesDatasource;
 import com.jesuslcorominas.nasa.data.repository.impl.PhotoRepositoryImpl;
+import com.jesuslcorominas.nasa.data.repository.impl.PreferencesRepositoryImpl;
 import com.jesuslcorominas.nasa.model.repository.PhotoRepository;
+import com.jesuslcorominas.nasa.model.repository.PreferencesRepository;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,8 +27,13 @@ public class RepositoryModule {
      * @return El repositorio de {@link com.jesuslcorominas.nasa.data.net.dto.PhotoDto}
      */
     @Provides
-    public PhotoRepository providePhotoRepository(PhotoRemoteDatasource photoRemoteDatasource) {
-        return new PhotoRepositoryImpl(photoRemoteDatasource);
+    PhotoRepository providePhotoRepository(PhotoRemoteDatasource photoRemoteDatasource, PhotoLocalDatasource photoLocalDatasource) {
+        return new PhotoRepositoryImpl(photoRemoteDatasource, photoLocalDatasource);
+    }
+
+    @Provides
+    PreferencesRepository providePreferencesRepository(PreferencesDatasource preferencesDatasource) {
+        return new PreferencesRepositoryImpl(preferencesDatasource);
     }
 
 }

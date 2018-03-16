@@ -2,7 +2,6 @@ package com.jesuslcorominas.nasa.app.di.component;
 
 import com.jesuslcorominas.nasa.app.di.module.MainModule;
 import com.jesuslcorominas.nasa.app.view.activity.MainActivity;
-import com.jesuslcorominas.nasa.data.di.module.RepositoryModule;
 
 import javax.inject.Singleton;
 
@@ -15,7 +14,7 @@ import dagger.Component;
  * @see <a href="https://google.github.io/dagger/">Dagger2</a>
  */
 @Singleton
-@Component(modules = {MainModule.class, RepositoryModule.class})
+@Component(modules = {MainModule.class})
 public interface MainComponent {
 
     void inject(MainActivity mainActivity);

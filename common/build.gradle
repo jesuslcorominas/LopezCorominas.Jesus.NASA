@@ -6,3 +6,8 @@ dependencies {
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
+
+dependencies {
+// Joda-time
+    implementation "joda-time:joda-time:$jodatimeVersion"
+}

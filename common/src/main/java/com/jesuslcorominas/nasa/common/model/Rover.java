@@ -1,18 +1,17 @@
-package com.jesuslcorominas.nasa.model.entity;
+package com.jesuslcorominas.nasa.common.model;
 
 import org.joda.time.DateTime;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Representacion de la entidad Rover
+ * POJO del objeto Rover
  *
  * @author Jesús López Corominas
  */
 @SuppressWarnings("unused")
-public class RoverModelEntity {
-
-    private Long id;
+public class Rover extends AbstractBaseVo {
 
     private String name;
 
@@ -28,15 +27,7 @@ public class RoverModelEntity {
 
     private Integer totalPhotos;
 
-    private Collection<CameraModelEntity> cameras;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private List<Camera> cameras = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -94,11 +85,12 @@ public class RoverModelEntity {
         this.totalPhotos = totalPhotos;
     }
 
-    public Collection<CameraModelEntity> getCameras() {
+    public List<Camera> getCameras() {
         return cameras;
     }
 
-    public void setCameras(Collection<CameraModelEntity> cameras) {
+    public void setCameras(List<Camera> cameras) {
         this.cameras = cameras;
     }
+
 }

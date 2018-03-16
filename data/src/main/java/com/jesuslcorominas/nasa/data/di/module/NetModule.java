@@ -3,6 +3,10 @@ package com.jesuslcorominas.nasa.data.di.module;
 import com.google.gson.Gson;
 import com.jesuslcorominas.nasa.data.net.client.PhotoClient;
 import com.jesuslcorominas.nasa.data.net.client.impl.PhotoClientImpl;
+import com.jesuslcorominas.nasa.data.net.interceptor.ApiKeyInterceptor;
+import com.jesuslcorominas.nasa.model.preferences.PreferencesHelper;
+
+import org.modelmapper.ModelMapper;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @author Jesús López Corominas
  * @see <a href="http://square.github.io/retrofit/">Retrofit</a>
  */
-@Module(includes = {GsonModule.class})
+@Module(includes = {GsonModule.class, MapperModule.class})
 public class NetModule {
 
     /**
@@ -85,6 +89,12 @@ public class NetModule {
         return interceptor;
     }
 
+    @Singleton
+    @Provides
+    ApiKeyInterceptor provideApiKeyInterceptor(PreferencesHelper preferencesHelper) {
+        return new ApiKeyInterceptor(preferencesHelper);
+    }
+
     /**
      * Provee del cliente HTTP con el log configurado
      *
@@ -93,11 +103,12 @@ public class NetModule {
      */
     @Singleton
     @Provides
-    OkHttpClient provideOkHttpClient(HttpLoggingInterceptor loggingInterceptor) {
+    OkHttpClient provideOkHttpClient(HttpLoggingInterceptor loggingInterceptor, ApiKeyInterceptor apiKeyInterceptor) {
         return new OkHttpClient.Builder().
                 readTimeout(READ_TIMEOUT, TimeUnit.SECONDS).
                 connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS).
                 addInterceptor(loggingInterceptor).
+                addInterceptor(apiKeyInterceptor).
                 build();
     }
 
@@ -127,18 +138,19 @@ public class NetModule {
      * @return La api para construir las llamadas
      */
     @Provides
-    public PhotoClient.Api providePhotoClientApi(Retrofit retrofit) {
+    PhotoClient.Api providePhotoClientApi(Retrofit retrofit) {
         return retrofit.create(PhotoClient.Api.class);
     }
 
     /**
      * Provee del cliente Rest para realizar las llamadas remotas y procesar la respuesta
      *
-     * @param api La Api para realizar las llamadas
+     * @param api    La Api para realizar las llamadas
+     * @param mapper El conversor entre clases
      * @return el cliente Rest para realizar las llamadas
      */
     @Provides
-    public PhotoClient providePhotoClient(PhotoClient.Api api) {
-        return new PhotoClientImpl(api);
+    PhotoClient providePhotoClient(PhotoClient.Api api, ModelMapper mapper) {
+        return new PhotoClientImpl(api, mapper);
     }
 }

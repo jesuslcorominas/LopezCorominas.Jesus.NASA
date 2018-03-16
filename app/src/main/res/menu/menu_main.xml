@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="@string/date"
+        android:id="@+id/item_menu_date"
+        android:icon="@drawable/ic_date"
+        app:showAsAction="always" />
+
     <item android:title="@string/licenses"
         android:id="@+id/item_menu_copyright"
         android:icon="@drawable/ic_copyright"

@@ -7,7 +7,7 @@ import android.support.v7.widget.CardView;
 import android.widget.LinearLayout;
 
 import com.jesuslcorominas.nasa.app.R;
-import com.jesuslcorominas.nasa.app.model.Photo;
+import com.jesuslcorominas.nasa.common.model.Photo;
 import com.jesuslcorominas.nasa.common.util.DateUtil;
 import com.squareup.picasso.Picasso;
 

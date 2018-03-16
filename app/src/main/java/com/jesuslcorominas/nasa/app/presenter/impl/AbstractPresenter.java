@@ -37,6 +37,8 @@ public abstract class AbstractPresenter<V extends CallbackView> implements Prese
      */
     @Override
     public void onResume() {
+        callbackView.hideProgress();
+
         resumed = true;
     }
 

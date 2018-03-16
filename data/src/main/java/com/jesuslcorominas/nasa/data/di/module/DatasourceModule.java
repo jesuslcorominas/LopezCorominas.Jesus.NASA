@@ -1,8 +1,15 @@
 package com.jesuslcorominas.nasa.data.di.module;
 
-import com.jesuslcorominas.nasa.data.datasource.remote.PhotoRemoteDatasource;
-import com.jesuslcorominas.nasa.data.datasource.remote.impl.PhotoRemoteDatasourceImpl;
+import com.jesuslcorominas.nasa.data.database.TransactionManager;
+import com.jesuslcorominas.nasa.data.database.objectbox.dao.PhotoDao;
+import com.jesuslcorominas.nasa.data.datasource.PhotoLocalDatasource;
+import com.jesuslcorominas.nasa.data.datasource.PhotoRemoteDatasource;
+import com.jesuslcorominas.nasa.data.datasource.PreferencesDatasource;
+import com.jesuslcorominas.nasa.data.datasource.impl.PhotoLocalDatasourceImpl;
+import com.jesuslcorominas.nasa.data.datasource.impl.PhotoRemoteDatasourceImpl;
+import com.jesuslcorominas.nasa.data.datasource.impl.PreferencesDatasourceImpl;
 import com.jesuslcorominas.nasa.data.net.client.PhotoClient;
+import com.jesuslcorominas.nasa.model.preferences.PreferencesHelper;
 
 import dagger.Module;
 import dagger.Provides;
@@ -12,7 +19,7 @@ import dagger.Provides;
  *
  * @author Jesús López Corominas
  */
-@Module(includes = {NetModule.class})
+@Module(includes = {NetModule.class, DatabaseModule.class})
 public class DatasourceModule {
 
     /**
@@ -23,7 +30,17 @@ public class DatasourceModule {
      * @return La fuente de datos remota de {@link com.jesuslcorominas.nasa.data.net.dto.PhotoDto}
      */
     @Provides
-    public PhotoRemoteDatasource providePhotoRemoteDatasource(PhotoClient photoClient) {
+    PhotoRemoteDatasource providePhotoRemoteDatasource(PhotoClient photoClient) {
         return new PhotoRemoteDatasourceImpl(photoClient);
+    }
+
+    @Provides
+    PhotoLocalDatasource providePhotoLocalDatasource(PhotoDao photoDao, TransactionManager manager) {
+        return new PhotoLocalDatasourceImpl(photoDao, manager);
+    }
+
+    @Provides
+    PreferencesDatasource providePreferencesDatasource(PreferencesHelper preferencesHelper) {
+        return new PreferencesDatasourceImpl(preferencesHelper);
     }
 }

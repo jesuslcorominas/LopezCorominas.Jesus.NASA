@@ -4,6 +4,8 @@
     <string name="app_name">NASA</string>
 
     <string name="button_accept">Aceptar</string>
+    <string name="button_cancel">Cancelar</string>
 
     <string name="licenses">Licencias</string>
+    <string name="date">Fecha</string>
 </resources>

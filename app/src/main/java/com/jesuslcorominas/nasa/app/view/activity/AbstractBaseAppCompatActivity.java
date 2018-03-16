@@ -52,9 +52,9 @@ abstract class AbstractBaseAppCompatActivity<V extends CallbackView> extends App
     abstract Presenter<V> getPresenter();
 
     /**
-     * Obtiene el {@link CallbackView} del {@link Presenter}. Sera la propia {@link android.app.Activity}
+     * Obtiene el {@link ActivityCallbackView} del {@link Presenter}. Sera la propia {@link android.app.Activity}
      *
-     * @return el {@link CallbackView} del {@link Presenter}
+     * @return el {@link ActivityCallbackView} del {@link Presenter}
      */
     abstract V getCallbackView();
 
