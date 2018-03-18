@@ -143,7 +143,7 @@ public class MapperModule {
     }
 
     private RoverEntity toRoverEntity(Rover rover, BoxStore boxStore) {
-        if (rover == null) {
+        if (rover == null || rover.getId() == null || rover.getId() == 0) {
             return null;
         }
 
@@ -160,28 +160,32 @@ public class MapperModule {
         roverEntity.setLandingDate(rover.getLandingDate());
 
         for (Camera camera : rover.getCameras()) {
-            CameraEntity cameraEntity = new CameraEntity();
-            cameraEntity.setId(camera.getId());
-            boxStore.boxFor(CameraEntity.class).attach(cameraEntity);
+            if (camera.getId() != null && camera.getId() != 0) {
+                CameraEntity cameraEntity = new CameraEntity();
+                cameraEntity.setId(camera.getId());
+                boxStore.boxFor(CameraEntity.class).attach(cameraEntity);
 
-            cameraEntity.setName(camera.getName());
-            cameraEntity.setFullName(camera.getFullName());
+                cameraEntity.setName(camera.getName());
+                cameraEntity.setFullName(camera.getFullName());
 
-            for (Photo photo : camera.getPhotos()) {
-                PhotoEntity photoEntity = new PhotoEntity();
-                photoEntity.setId(photo.getId());
-                boxStore.boxFor(PhotoEntity.class).attach(photoEntity);
+                for (Photo photo : camera.getPhotos()) {
+                    if (photo.getId() != null && photo.getId() != 0) {
+                        PhotoEntity photoEntity = new PhotoEntity();
+                        photoEntity.setId(photo.getId());
+                        boxStore.boxFor(PhotoEntity.class).attach(photoEntity);
 
-                photoEntity.setEarthDate(photo.getEarthDate());
-                photoEntity.setImgSrc(photo.getImgSrc());
-                photoEntity.setSol(photo.getSol());
+                        photoEntity.setEarthDate(photo.getEarthDate());
+                        photoEntity.setImgSrc(photo.getImgSrc());
+                        photoEntity.setSol(photo.getSol());
 
-                photoEntity.setCamera(cameraEntity);
-                cameraEntity.getPhotosRelation().add(photoEntity);
+                        photoEntity.setCamera(cameraEntity);
+                        cameraEntity.getPhotosRelation().add(photoEntity);
+                    }
+                }
+
+                cameraEntity.setRover(roverEntity);
+                roverEntity.getCamerasRelation().add(cameraEntity);
             }
-
-            cameraEntity.setRover(roverEntity);
-            roverEntity.getCamerasRelation().add(cameraEntity);
         }
 
         return roverEntity;
@@ -214,7 +218,7 @@ public class MapperModule {
     }
 
     private CameraEntity toCameraEntity(Camera camera, BoxStore boxStore) {
-        if (camera == null) {
+        if (camera == null || camera.getId() == null || camera.getId() == 0) {
             return null;
         }
 
@@ -226,16 +230,18 @@ public class MapperModule {
         cameraEntity.setFullName(camera.getFullName());
 
         for (Photo photo : camera.getPhotos()) {
-            PhotoEntity photoEntity = new PhotoEntity();
-            photoEntity.setId(photo.getId());
-            boxStore.boxFor(PhotoEntity.class).attach(photoEntity);
+            if (photo.getId() != null && photo.getId() != 0) {
+                PhotoEntity photoEntity = new PhotoEntity();
+                photoEntity.setId(photo.getId());
+                boxStore.boxFor(PhotoEntity.class).attach(photoEntity);
 
-            photoEntity.setEarthDate(photo.getEarthDate());
-            photoEntity.setImgSrc(photo.getImgSrc());
-            photoEntity.setSol(photo.getSol());
+                photoEntity.setEarthDate(photo.getEarthDate());
+                photoEntity.setImgSrc(photo.getImgSrc());
+                photoEntity.setSol(photo.getSol());
 
-            photoEntity.setCamera(cameraEntity);
-            cameraEntity.getPhotosRelation().add(photoEntity);
+                photoEntity.setCamera(cameraEntity);
+                cameraEntity.getPhotosRelation().add(photoEntity);
+            }
         }
 
         cameraEntity.setRover(toRoverEntity(camera.getRover(), boxStore));
@@ -261,7 +267,7 @@ public class MapperModule {
     }
 
     private PhotoEntity toPhotoEntity(Photo photo, BoxStore boxStore) {
-        if (photo == null) {
+        if (photo == null || photo.getId() == null || photo.getId() == 0) {
             return null;
         }
 
