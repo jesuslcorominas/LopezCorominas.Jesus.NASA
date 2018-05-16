@@ -27,7 +27,18 @@ android {
 
         versionProps.load(new FileInputStream(versionPropsFile))
 
-        def code = versionProps['VERSION_CODE'].toInteger() + 1
+        def value = 0
+
+        def runTasks = gradle.startParameter.taskNames
+        println('RunTasks: ' + runTasks)
+
+        if (':app:assembleJenkins' in runTasks) {
+            value = 1
+        }
+
+        println('Value : ' + value)
+
+        def code = versionProps['VERSION_CODE'].toInteger() + value
 
         versionProps['VERSION_CODE'] = code.toString()
         versionProps.store(versionPropsFile.newWriter(), null)
@@ -52,11 +63,18 @@ android {
     }
     buildTypes {
 
-        buildTypes {
-            release {
-                minifyEnabled false
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            }
+
+        debug {
+            debuggable true
+        }
+
+        jenkins {
+            initWith buildTypes.debug
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -87,7 +105,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
     //  LicensesDialog
-    implementation ('de.psdev.licensesdialog:licensesdialog:1.8.3')
+    implementation('de.psdev.licensesdialog:licensesdialog:1.8.3')
 
     // Calendario
     implementation 'com.wdullaer:materialdatetimepicker:3.5.0'
