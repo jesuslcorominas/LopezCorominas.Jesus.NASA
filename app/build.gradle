@@ -32,7 +32,7 @@ android {
         def runTasks = gradle.startParameter.taskNames
         println('RunTasks: ' + runTasks)
 
-        if (':app:assembleJenkins' in runTasks) {
+        if ('app:assembleJenkins' in runTasks) {
             value = 1
         }
 
