@@ -68,13 +68,13 @@ android {
             debuggable true
         }
 
-        jenkins {
-            initWith buildTypes.debug
-        }
-
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        jenkins {
+            initWith release
         }
     }
 }
