@@ -38,10 +38,13 @@ android {
 
         println('Value : ' + value)
 
-        def code = versionProps['VERSION_CODE'].toInteger() + value
+        def oldCode = versionProps['VERSION_CODE'].toInteger()
+        def code = oldCode + value
 
-        versionProps['VERSION_CODE'] = code.toString()
-        versionProps.store(versionPropsFile.newWriter(), null)
+        if (code != oldCode) {
+            versionProps['VERSION_CODE'] = code.toString()
+            versionProps.store(versionPropsFile.newWriter(), null)
+        }
 
         defaultConfig {
             applicationId "com.jesuslcorominas.nasa.app"
