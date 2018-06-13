@@ -92,6 +92,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [fabricApiKey: fabricApiKey]
+
+        buildConfigField "String", "END_POINT", "\"https://api.nasa.gov/mars-photos/\""
+        buildConfigField "String", "API_KEY", "\"DEMO_KEY\""
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -108,8 +113,6 @@ android {
 
         jenkins {
             initWith release
-
-            applicationIdSuffix ".SNAPSHOT"
         }
     }
 }
