@@ -25,6 +25,10 @@
         <activity
             android:name=".view.activity.DetailActivity_"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="${fabricApiKey}" />
     </application>
 
 </manifest>
