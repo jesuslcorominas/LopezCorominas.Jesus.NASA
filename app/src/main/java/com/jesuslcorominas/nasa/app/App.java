@@ -2,6 +2,7 @@ package com.jesuslcorominas.nasa.app;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.jesuslcorominas.nasa.app.di.component.DaggerDetailComponent;
 import com.jesuslcorominas.nasa.app.di.component.DaggerMainComponent;
 import com.jesuslcorominas.nasa.app.di.component.DetailComponent;
@@ -13,6 +14,8 @@ import com.jesuslcorominas.nasa.data.di.module.DatabaseModule;
 import com.jesuslcorominas.nasa.data.di.module.NetModule;
 
 import org.androidannotations.annotations.EApplication;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Punto de entrada a la aplicacion. Configuramos los {@link dagger.Component} de Dagger que
@@ -32,6 +35,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Fabric.with(this, new Crashlytics());
 
         String endPoint = BuildConfig.END_POINT;
 
