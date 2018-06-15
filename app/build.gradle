@@ -50,7 +50,6 @@ android {
 
         fabricProps.store(fabricFile.newWriter(), null)
 
-        // Esta linea es la que lo pone en el Manifest
         fabricApiKey = fabricKey
     } else {
         def Properties fabricProps = new Properties();
@@ -58,6 +57,7 @@ android {
 
         fabricApiKey = fabricProps.getProperty("apiKey")
     }
+
 // endregion
 
 // region Configuracion Version autoincremental
@@ -91,7 +91,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [fabricApiKey: fabricApiKey]
+        manifestPlaceholders = [fabricApiKey: fabricApiKey, launchActivityName: launchActivity]
 
         buildConfigField "String", "END_POINT", "\"https://api.nasa.gov/mars-photos/\""
         buildConfigField "String", "API_KEY", "\"DEMO_KEY\""

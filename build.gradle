@@ -17,6 +17,7 @@ ext {
     compileSDK = 27
 
     packageName = "com.jesuslcorominas.nasa."
+    launchActivity = ".view.activity.MainActivity_"
 }
 
 allprojects {

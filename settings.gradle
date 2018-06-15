@@ -1,1 +1,1 @@
-include ':app', ':model', ':data', ':common'
+include ':app', ':model', ':data', ':common', ':appium'

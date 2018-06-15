@@ -55,3 +55,4 @@ freeline/
 freeline_project_description.json
 .idea/
 app/fabric.properties
+appium/screenshots/01_start.png
